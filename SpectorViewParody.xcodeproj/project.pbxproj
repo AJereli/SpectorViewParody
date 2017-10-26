@@ -13,9 +13,8 @@
 		CE1BD5F81F9E972E00131E6C /* AutorizationPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1BD5F71F9E972E00131E6C /* AutorizationPageController.swift */; };
 		CE1BD5FB1F9E972E00131E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1BD5F91F9E972E00131E6C /* Main.storyboard */; };
 		CE1BD5FD1F9E972E00131E6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1BD5FC1F9E972E00131E6C /* Assets.xcassets */; };
-		CE1BD60B1F9E972E00131E6C /* SpectorViewParodyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1BD60A1F9E972E00131E6C /* SpectorViewParodyTests.swift */; };
-		CE1BD6161F9E972E00131E6C /* SpectorViewParodyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1BD6151F9E972E00131E6C /* SpectorViewParodyUITests.swift */; };
 		CE1E16441FA14E620015B997 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E16431FA14E620015B997 /* Errors.swift */; };
+		CE2975C01FA1873800C26E5A /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2975BF1FA1873800C26E5A /* DeviceInfo.swift */; };
 		CEE696D31F9ECEBA00834360 /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE696D21F9ECEBA00834360 /* UserPageViewController.swift */; };
 		CEFE8ABE1F9E9C3E004B2AC8 /* AutorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE8ABD1F9E9C3E004B2AC8 /* AutorizationManager.swift */; };
 		CEFE8AC01F9EB24D004B2AC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE8ABF1F9EB24D004B2AC8 /* User.swift */; };
@@ -51,12 +50,9 @@
 		CE1BD5FC1F9E972E00131E6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE1BD6011F9E972E00131E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1BD6061F9E972E00131E6C /* SpectorViewParodyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectorViewParodyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE1BD60A1F9E972E00131E6C /* SpectorViewParodyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectorViewParodyTests.swift; sourceTree = "<group>"; };
-		CE1BD60C1F9E972E00131E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1BD6111F9E972E00131E6C /* SpectorViewParodyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectorViewParodyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE1BD6151F9E972E00131E6C /* SpectorViewParodyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectorViewParodyUITests.swift; sourceTree = "<group>"; };
-		CE1BD6171F9E972E00131E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1E16431FA14E620015B997 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		CE2975BF1FA1873800C26E5A /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		CEE696D21F9ECEBA00834360 /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
 		CEFE8ABD1F9E9C3E004B2AC8 /* AutorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationManager.swift; sourceTree = "<group>"; };
 		CEFE8ABF1F9EB24D004B2AC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -114,8 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				CE1BD5F41F9E972E00131E6C /* SpectorViewParody */,
-				CE1BD6091F9E972E00131E6C /* SpectorViewParodyTests */,
-				CE1BD6141F9E972E00131E6C /* SpectorViewParodyUITests */,
 				CE1BD5F31F9E972E00131E6C /* Products */,
 				4EFC29839B61AD920CF23CC4 /* Pods */,
 				4C56720C00411D79B6171BC8 /* Frameworks */,
@@ -138,6 +132,7 @@
 				CE1BD5F91F9E972E00131E6C /* Main.storyboard */,
 				CEFE8AC11F9EC0B0004B2AC8 /* LaunchScreen.storyboard */,
 				CEFE8AC51F9EC955004B2AC8 /* VideoCollectionController.swift */,
+				CE2975BF1FA1873800C26E5A /* DeviceInfo.swift */,
 				CEE696D21F9ECEBA00834360 /* UserPageViewController.swift */,
 				CE1BD5F51F9E972E00131E6C /* AppDelegate.swift */,
 				CE1BD5F71F9E972E00131E6C /* AutorizationPageController.swift */,
@@ -150,24 +145,6 @@
 				CE1BD6011F9E972E00131E6C /* Info.plist */,
 			);
 			path = SpectorViewParody;
-			sourceTree = "<group>";
-		};
-		CE1BD6091F9E972E00131E6C /* SpectorViewParodyTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE1BD60A1F9E972E00131E6C /* SpectorViewParodyTests.swift */,
-				CE1BD60C1F9E972E00131E6C /* Info.plist */,
-			);
-			path = SpectorViewParodyTests;
-			sourceTree = "<group>";
-		};
-		CE1BD6141F9E972E00131E6C /* SpectorViewParodyUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CE1BD6151F9E972E00131E6C /* SpectorViewParodyUITests.swift */,
-				CE1BD6171F9E972E00131E6C /* Info.plist */,
-			);
-			path = SpectorViewParodyUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +351,7 @@
 				CEFE8AC61F9EC955004B2AC8 /* VideoCollectionController.swift in Sources */,
 				CE1E16441FA14E620015B997 /* Errors.swift in Sources */,
 				CEE696D31F9ECEBA00834360 /* UserPageViewController.swift in Sources */,
+				CE2975C01FA1873800C26E5A /* DeviceInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +359,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE1BD60B1F9E972E00131E6C /* SpectorViewParodyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +366,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE1BD6161F9E972E00131E6C /* SpectorViewParodyUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

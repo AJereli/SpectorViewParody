@@ -58,6 +58,13 @@ class UserPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ShowGallarySegue"{
+            self.navigationController?.pushViewController(VideoCollectionController(), animated: true)
+        }
+      
+    }
 
     @IBAction func logoutEvent(_ sender: Any) {
         AutorizationManager.logout()
@@ -66,8 +73,11 @@ class UserPageViewController: UIViewController {
     
     @IBAction func showGalleryBtn(_ sender: Any) {
         performSegue(withIdentifier: "ShowGallarySegue", sender: sender)
-        
     }
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
