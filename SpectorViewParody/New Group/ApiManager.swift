@@ -22,18 +22,21 @@ extension Dictionary {
     }
 }
 
-class ApiManager<O:Mappable> {
+class ApiManager<O:BaseMappable>  {
     
-    func get  (_ stringUrl:String, parameters:Parameters? = nil, method:HTTPMethod = .get) -> Promise<O>{
+    func get  (_ stringUrl:String, parameters:Parameters? = nil, method:HTTPMethod = .get, headers:[String:String] = Headers.headers) -> Promise<O>{
         return Promise{ fulfill, reject in
-            Alamofire.request(stringUrl, method: method, parameters:parameters, encoding: JSONEncoding.default, headers:Headers.headers).validate().responseJSON{
+            Alamofire.request(stringUrl, method: method, parameters:parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
                 responseJson -> Void in
                 guard responseJson.result.isSuccess else {
                     print("Error while fetching remote rooms: \(responseJson.result.error!)")
                     reject(responseJson.result.error!)
                     return
                 }
-                let jsonResponse = responseJson.result.value as? [String: Any]
+                var jsonResponse = responseJson.result.value as? [String: Any]
+//                if jsonResponse == nil {
+//                    jsonResponse = responseJson.result.value as? [[String : Any]]
+//                }
                 fulfill(O(JSON: jsonResponse!)!)
                 
             }

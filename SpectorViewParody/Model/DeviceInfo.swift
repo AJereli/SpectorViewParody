@@ -11,7 +11,7 @@ import ObjectMapper
 
 class DeviceInfo: ImmutableMappable {
     let id:Int
-    let ownerId:Int
+    //let ownerId:Int
     let hash:String
     let title:String
     let osVersion:String
@@ -21,7 +21,8 @@ class DeviceInfo: ImmutableMappable {
     
     required init(map: Map) throws {
         id = try map.value("id")
-        ownerId = try map.value("ownerId")
+        //ownerId = try map.value("ownerId")
+        
         hash = try map.value("hash")
         title = try map.value("title")
         osVersion = try map.value("osVersion")
@@ -31,7 +32,7 @@ class DeviceInfo: ImmutableMappable {
     }
     func mapping(map: Map) {
         id >>> map["id"]
-        ownerId >>> map["ownerId"]
+        //ownerId >>> map["ownerId"]
         hash >>> map["hash"]
         title >>> map["title"]
         osVersion >>> map["osVersion"]

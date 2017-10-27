@@ -19,14 +19,16 @@ class UserPageViewController: UIViewController {
     @IBOutlet weak var planLabel: UILabel!
     @IBOutlet weak var storageUsedLabel: UILabel!
     @IBOutlet weak var storageProgressView: UIProgressView!
+    @IBOutlet weak var diviceTitleLabel: UILabel!
     @IBOutlet weak var deviceHashLabel: UILabel!
     
+    @IBOutlet weak var deviceInfoView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userInfoView.isHidden = true
+        deviceInfoView.isHidden = true
 
-        
 
     }
     
@@ -34,9 +36,11 @@ class UserPageViewController: UIViewController {
         super.viewDidAppear(animated)
         
         userInfoView.isHidden = true
+        deviceInfoView.isHidden = true
+
         dataLoadActivityIndicator.startAnimating()
         User.getUserMetaData()
-            .then{ userMetaData -> Void in
+            .then{ userMetaData -> Promise<DeviceInfo> in
                 self.emailLabel.text = userMetaData.user?.email!
                 self.planLabel.text = "Your plan: " + (userMetaData.user?.plan?.name)!
                 let progress:Float = Float(userMetaData.planCapacity!.storageLimit! / userMetaData.user!.plan!.storageLimit!)
@@ -44,9 +48,15 @@ class UserPageViewController: UIViewController {
                 self.moviesLabel.text = String(userMetaData.planCapacity!.moviesAmount!) + "/" + String(userMetaData.user!.plan!.moviesAmount!)
                 self.devicesLabel.text = String(userMetaData.planCapacity!.devicesAmount!) + "/" + String(userMetaData.user!.plan!.devicesAmount!)
                 self.storageUsedLabel.text = String(userMetaData.planCapacity!.storageLimit!) + " / " + String(userMetaData.user!.plan!.storageLimit!)
+                return DeviceManager.getCurrentDevice()
+            }.then{deviceInfo -> Void in
+                self.diviceTitleLabel.text = deviceInfo.title
+                self.deviceHashLabel.text = DeviceManager.XDeviceHash
             }.always {
                 self.dataLoadActivityIndicator.stopAnimating()
                 self.userInfoView.isHidden = false
+                self.deviceInfoView.isHidden = false
+
             }
             .catch {error in
                 print(error)
