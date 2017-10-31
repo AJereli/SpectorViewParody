@@ -8,22 +8,37 @@
 
 import UIKit
 import Alamofire
-class VideoCollectionController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource{
+import AVKit
+import AVFoundation
 
+class VideoCollectionController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var loadActivityIndicator: UIActivityIndicatorView!
     
     let moviesSource = MoviesManager.getInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        moviesSource.getAllMovie().then{result -> Void in
-            
-            let r = result
-            
-        }
-        
+       
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
+    }
+    private func loadData(){
+        loadActivityIndicator.startAnimating()
+        moviesSource.getAllMovie().then{result -> Void in
+            self.moviesSource.movies = result
+            }.then {_ -> Void in
+                self.collectionView.reloadData()
+                
+            }.always {
+                self.loadActivityIndicator.stopAnimating()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -37,13 +52,28 @@ class VideoCollectionController: UIViewController, UICollectionViewDelegate,UICo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         
-        let book = moviesSource.movies[indexPath.row]
-        0
-        //cell.displayContent(image: store.images[indexPath.row], title: book.name)
         
+        if moviesSource.movies[indexPath.row].video != nil {
+            cell.displayContent(imageUrl: (moviesSource.movies[indexPath.row].thumbnail?.url)!, title: (moviesSource.movies[indexPath.row].video?.fileName)!)
+        }else{
+            cell.displayContent(imageUrl: (moviesSource.movies[indexPath.row].photo?.url)!, title: (moviesSource.movies[indexPath.row].photo?.fileName)!)
+        }
         return cell
         
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let url = moviesSource.movies[indexPath.row].video?.url{
+            
+            let videoURL = URL(string: url)
+            let player = AVPlayer(url: videoURL!)
+            let playerViewController = AVPlayerViewController()
+            playerViewController.player = player
+            self.present(playerViewController, animated: true) {
+                playerViewController.player!.play()
+            }
+            
+            
+        }}
 
     /*
     // MARK: - Navigation

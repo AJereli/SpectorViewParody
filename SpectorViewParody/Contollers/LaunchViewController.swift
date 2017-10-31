@@ -7,16 +7,36 @@
 //
 
 import UIKit
+import PromiseKit
 
 class LaunchViewController: UIViewController {
 
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+       
+      
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        activityIndicator.startAnimating()
 
+        let identifier:String = AutorizationManager.getLocalUserInfo() ? "navigationController" : "autorizationController"
+        self.startController(identifier: identifier)
+       
+    }
+    
+    private func startController (identifier:String){
+        activityIndicator.stopAnimating()
+
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: identifier) as! UINavigationController
+        UIApplication.shared.keyWindow?.rootViewController = viewController
+    }
+    
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

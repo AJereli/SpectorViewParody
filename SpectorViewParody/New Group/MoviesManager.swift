@@ -17,8 +17,8 @@ class MoviesManager {
     
     fileprivate init() {}
     
-    func getAllMovie () -> Promise<Movie>{
-        return ApiManager<Movie>().get("https://dev.spectorview.com/api/v2/movie/all")
+    func getAllMovie () -> Promise<[Movie]>{
+        return ApiManager<Movie>().getArray("https://dev.spectorview.com/api/v2/movie/all")
     }
 }
 

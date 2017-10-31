@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B28D47273DAC774904C00A8 /* Pods_SpectorViewParody.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E974B4F4FC6028181428B72 /* Pods_SpectorViewParody.framework */; };
+		CE1927531FA7CF75000BC57F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1927521FA7CF75000BC57F /* UserManager.swift */; };
 		CE1BD5F61F9E972E00131E6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1BD5F51F9E972E00131E6C /* AppDelegate.swift */; };
 		CE1BD5F81F9E972E00131E6C /* AutorizationPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1BD5F71F9E972E00131E6C /* AutorizationPageController.swift */; };
 		CE1BD5FB1F9E972E00131E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1BD5F91F9E972E00131E6C /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 		CE3155431FA29F50002939BD /* AutorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3155401FA29F50002939BD /* AutorizationManager.swift */; };
 		CE3155441FA29F50002939BD /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3155411FA29F50002939BD /* ApiManager.swift */; };
 		CE3155451FA29F50002939BD /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3155421FA29F50002939BD /* DeviceManager.swift */; };
+		CE7512A81FA8057E00EEB2B3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7512A71FA8057E00EEB2B3 /* CameraViewController.swift */; };
 		CEC928101FA2B1A700D22219 /* VideoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC9280F1FA2B1A700D22219 /* VideoInfo.swift */; };
 		CEC928141FA2B9AB00D22219 /* MoviesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC928131FA2B9AB00D22219 /* MoviesManager.swift */; };
 		CEC928161FA2BCD700D22219 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC928151FA2BCD700D22219 /* Movies.swift */; };
@@ -48,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		0E974B4F4FC6028181428B72 /* Pods_SpectorViewParody.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpectorViewParody.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE1927521FA7CF75000BC57F /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		CE1BD5F21F9E972E00131E6C /* SpectorViewParody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectorViewParody.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1BD5F51F9E972E00131E6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE1BD5F71F9E972E00131E6C /* AutorizationPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationPageController.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		CE3155401FA29F50002939BD /* AutorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationManager.swift; sourceTree = "<group>"; };
 		CE3155411FA29F50002939BD /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		CE3155421FA29F50002939BD /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		CE7512A71FA8057E00EEB2B3 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		CEC9280F1FA2B1A700D22219 /* VideoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoInfo.swift; sourceTree = "<group>"; };
 		CEC928131FA2B9AB00D22219 /* MoviesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesManager.swift; sourceTree = "<group>"; };
 		CEC928151FA2BCD700D22219 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
@@ -141,14 +145,11 @@
 		CE1BD5F41F9E972E00131E6C /* SpectorViewParody */ = {
 			isa = PBXGroup;
 			children = (
+				CEEE91F01FA7EED100643BFE /* View */,
 				CEC928171FA2BE0800D22219 /* Contollers */,
-				CEC9280E1FA2B18400D22219 /* Model */,
 				CE31553F1FA29EF7002939BD /* Managers */,
-				CE1BD5F91F9E972E00131E6C /* Main.storyboard */,
-				CEC928181FA2C11200D22219 /* CollectionViewCell.swift */,
-				CEFE8AC11F9EC0B0004B2AC8 /* LaunchScreen.storyboard */,
+				CEC9280E1FA2B18400D22219 /* Model */,
 				CE1BD5F51F9E972E00131E6C /* AppDelegate.swift */,
-				CEFE8ABF1F9EB24D004B2AC8 /* User.swift */,
 				CE1E16431FA14E620015B997 /* Errors.swift */,
 				CE1BD5FC1F9E972E00131E6C /* Assets.xcassets */,
 				CE1BD6011F9E972E00131E6C /* Info.plist */,
@@ -163,6 +164,7 @@
 				CE3155401FA29F50002939BD /* AutorizationManager.swift */,
 				CE3155421FA29F50002939BD /* DeviceManager.swift */,
 				CEC928131FA2B9AB00D22219 /* MoviesManager.swift */,
+				CE1927521FA7CF75000BC57F /* UserManager.swift */,
 			);
 			name = Managers;
 			path = "New Group";
@@ -171,6 +173,7 @@
 		CEC9280E1FA2B18400D22219 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CEFE8ABF1F9EB24D004B2AC8 /* User.swift */,
 				CE2975BF1FA1873800C26E5A /* DeviceInfo.swift */,
 				CEC9280F1FA2B1A700D22219 /* VideoInfo.swift */,
 				CEC928151FA2BCD700D22219 /* Movies.swift */,
@@ -182,12 +185,23 @@
 		CEC928171FA2BE0800D22219 /* Contollers */ = {
 			isa = PBXGroup;
 			children = (
+				CE7512A71FA8057E00EEB2B3 /* CameraViewController.swift */,
 				CEFE8AC31F9EC21B004B2AC8 /* LaunchViewController.swift */,
 				CEFE8AC51F9EC955004B2AC8 /* VideoCollectionController.swift */,
 				CEE696D21F9ECEBA00834360 /* UserPageViewController.swift */,
 				CE1BD5F71F9E972E00131E6C /* AutorizationPageController.swift */,
 			);
 			path = Contollers;
+			sourceTree = "<group>";
+		};
+		CEEE91F01FA7EED100643BFE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE1BD5F91F9E972E00131E6C /* Main.storyboard */,
+				CEC928181FA2C11200D22219 /* CollectionViewCell.swift */,
+				CEFE8AC11F9EC0B0004B2AC8 /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,12 +378,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SpectorViewParody/Pods-SpectorViewParody-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 			);
@@ -401,6 +417,8 @@
 				CEE696D31F9ECEBA00834360 /* UserPageViewController.swift in Sources */,
 				CEC9281B1FA2C4C500D22219 /* Thumbnail.swift in Sources */,
 				CE2975C01FA1873800C26E5A /* DeviceInfo.swift in Sources */,
+				CE1927531FA7CF75000BC57F /* UserManager.swift in Sources */,
+				CE7512A81FA8057E00EEB2B3 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

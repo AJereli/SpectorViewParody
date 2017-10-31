@@ -24,7 +24,28 @@ extension Dictionary {
 
 class ApiManager<O:BaseMappable>  {
     
+
+    
     func get  (_ stringUrl:String, parameters:Parameters? = nil, method:HTTPMethod = .get, headers:[String:String] = Headers.headers) -> Promise<O>{
+        return Promise{ fulfill, reject in
+            Alamofire.request(stringUrl, method: method, parameters:parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
+                responseJson -> Void in
+                guard responseJson.result.isSuccess else {
+                    print("Error while fetching remote rooms: \(responseJson.result.error!)")
+                    
+                    reject(responseJson.result.error!)
+                    return
+                }
+                let jsonResponse = responseJson.result.value as? [String: Any]
+       
+                fulfill(O(JSON: jsonResponse!)!)
+                
+            }
+
+        }
+        
+    }
+    func getArray  (_ stringUrl:String, parameters:Parameters? = nil, method:HTTPMethod = .get, headers:[String:String] = Headers.headers) -> Promise<[O]>{
         return Promise{ fulfill, reject in
             Alamofire.request(stringUrl, method: method, parameters:parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
                 responseJson -> Void in
@@ -33,18 +54,21 @@ class ApiManager<O:BaseMappable>  {
                     reject(responseJson.result.error!)
                     return
                 }
-                var jsonResponse = responseJson.result.value as? [String: Any]
-//                if jsonResponse == nil {
-//                    jsonResponse = responseJson.result.value as? [[String : Any]]
-//                }
-                fulfill(O(JSON: jsonResponse!)!)
+                
+                let jsonResponse = responseJson.result.value as? [[String: Any]]
+                var parsedResponse:[O] = []
+                for obj in jsonResponse!{
+                    if let mapObj = O(JSON: obj){
+                        parsedResponse.append(mapObj)
+                        
+                    }
+                }
+                fulfill(parsedResponse)
                 
             }
-
-        }   
-        
+            
+        }
         
     }
-    
     
 }

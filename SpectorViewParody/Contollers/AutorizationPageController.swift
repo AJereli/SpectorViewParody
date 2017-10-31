@@ -20,23 +20,16 @@ class AutorizationPageController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-       
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if User.getLocalUserInfo(){
-            self.startNavigationView()
-        }
-    }
+    
     
     @IBAction func enterEvent(_ sender: Any) {
         
         loginActivityIndicator.startAnimating()
         AutorizationManager.login(email: emailField.text!, password: passwordField.text!).then{user -> Void in
             self.startNavigationView()
-            
             
             }.always {
                 self.loginActivityIndicator.stopAnimating()

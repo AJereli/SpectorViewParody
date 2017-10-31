@@ -39,15 +39,19 @@ class UserPageViewController: UIViewController {
         deviceInfoView.isHidden = true
 
         dataLoadActivityIndicator.startAnimating()
-        User.getUserMetaData()
+        UserManager.getUserMetaData()
             .then{ userMetaData -> Promise<DeviceInfo> in
                 self.emailLabel.text = userMetaData.user?.email!
                 self.planLabel.text = "Your plan: " + (userMetaData.user?.plan?.name)!
                 let progress:Float = Float(userMetaData.planCapacity!.storageLimit! / userMetaData.user!.plan!.storageLimit!)
                 self.storageProgressView.setProgress(progress, animated: false)
+                
                 self.moviesLabel.text = String(userMetaData.planCapacity!.moviesAmount!) + "/" + String(userMetaData.user!.plan!.moviesAmount!)
+                
                 self.devicesLabel.text = String(userMetaData.planCapacity!.devicesAmount!) + "/" + String(userMetaData.user!.plan!.devicesAmount!)
+                
                 self.storageUsedLabel.text = String(userMetaData.planCapacity!.storageLimit!) + " / " + String(userMetaData.user!.plan!.storageLimit!)
+                
                 return DeviceManager.getCurrentDevice()
             }.then{deviceInfo -> Void in
                 self.diviceTitleLabel.text = deviceInfo.title
@@ -68,13 +72,7 @@ class UserPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "ShowGallarySegue"{
-            self.navigationController?.pushViewController(VideoCollectionController(), animated: true)
-        }
-      
-    }
+    
 
     @IBAction func logoutEvent(_ sender: Any) {
         AutorizationManager.logout()
