@@ -32,7 +32,7 @@ class LaunchViewController: UIViewController {
         activityIndicator.stopAnimating()
 
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: identifier) as! UINavigationController
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: identifier) 
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     

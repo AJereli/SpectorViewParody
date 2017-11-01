@@ -25,12 +25,14 @@ class CollectionViewCell: UICollectionViewCell {
     func displayContent(imageUrl: String, title: String) {
         
         videoTitleLabel.text = title
+        self.imageActivityIndicator.isHidden = false
         imageActivityIndicator.startAnimating()
         downloadImage(imageUrl).then{ resultImage -> Void in
             self.imageView.image = resultImage
             
             }.always {
                 self.imageActivityIndicator.stopAnimating()
+                self.imageActivityIndicator.isHidden = true
         }
     }
     

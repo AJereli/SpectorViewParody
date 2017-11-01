@@ -35,7 +35,7 @@ class AutorizationManager {
         return Promise {fulfill, reject in
             let params:Parameters = ["password": password, "grant_type": "password","username": email, "client_id": "ios", "client_secret": "qwerty"]
             let header:HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
-            Alamofire.request("https://dev.spectorview.com/api/oauth/token", method: .post, parameters:params, headers:header).responseJSON{
+            Alamofire.request("https://dev.spectorview.com/api/oauth/token", method: .post, parameters:params, headers:header).validate().responseJSON{
                 response -> Void in
                 switch response.result {
                 case .success:

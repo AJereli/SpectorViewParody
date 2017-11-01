@@ -17,7 +17,7 @@ class CameraViewController: UIViewController {
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var capturePhotoOutput: AVCapturePhotoOutput?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +30,10 @@ class CameraViewController: UIViewController {
             captureSession = AVCaptureSession()
             captureSession?.addInput(input)
             
+            capturePhotoOutput = AVCapturePhotoOutput()
+            capturePhotoOutput?.isHighResolutionCaptureEnabled = true
+            
+            captureSession?.addOutput(capturePhotoOutput!)
             
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
             videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
@@ -43,9 +47,13 @@ class CameraViewController: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        videoPreviewLayer!.frame = previewView.bounds
+    }
+    
     @IBAction func onTapTakePhoto(_ sender: Any) {
-        // Make sure capturePhotoOutput is valid
         guard let capturePhotoOutput = self.capturePhotoOutput else { return }
         
         // Get an instance of AVCapturePhotoSettings class
@@ -78,16 +86,26 @@ class CameraViewController: UIViewController {
 }
 
 extension CameraViewController : AVCapturePhotoCaptureDelegate {
+    func alert(title: String? = nil, message: String? = nil)
+    {
+        let alertController = UIAlertController(title: title, message:message, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil))
+        
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = UIViewController()
+        window.makeKeyAndVisible() //The makeKeyAndVisible message makes a window key, and moves it to be in front of any other windows on its level
+        window.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?)
     {
         
-        let imageData = photo.fileDataRepresentation()
-        // Initialise a UIImage with our image data
-        let capturedImage = UIImage.init(data: imageData! , scale: 1.0)
+        let capturedImage = UIImage.init(data: photo.fileDataRepresentation()! , scale: 1.0)
         if let image = capturedImage {
-            // Save our captured image to photos album
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            alert(title: "Image save", message: "Saved")
+
         }
+        
     }
     
 }
